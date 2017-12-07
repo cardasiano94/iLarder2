@@ -142,12 +142,26 @@ class ArticleTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "productSegue" {
+            // Pass the selected object to the new view controller.
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                var nextScene =  segue.destination as! ViewController
+                var newProduct = productList[indexPath.row]
+                nextScene.currentProduct = newProduct
+            }
+        }
+    }
+    
+    
+    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! ArticuloTableViewCell
         let myVC = storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         navigationController?.pushViewController(myVC, animated: true)
         
-    }
+    }*/
 
 
 }

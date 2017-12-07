@@ -9,8 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var currentProduct : Product?
+    
+    @IBOutlet weak var productName: UITextField!
+    @IBOutlet weak var weekRate: UITextField!
+    @IBOutlet weak var remainingUnits: UITextField!
     
     override func viewDidLoad() {
+        productName.text = currentProduct?.name
+        weekRate.text = String(format:"%.1f", (currentProduct?.rate)!)
+        remainingUnits.text = String(format:"%d", (currentProduct?.remaning)!)
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }

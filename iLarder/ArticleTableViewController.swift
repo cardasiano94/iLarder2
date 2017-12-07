@@ -10,7 +10,6 @@ import UIKit
 import SQLite3
 
 class ArticleTableViewController: UITableViewController {
-    
     var db: OpaquePointer?
     var productList = [Product]()
     var textFieldName = UITextField()
@@ -94,8 +93,8 @@ class ArticleTableViewController: UITableViewController {
         title: "Agregar", style: UIAlertActionStyle.default){
             (action) -> Void in
             self.inputsa.append(alert.textFields![0].text!)
-            self.inputsa.append(alert.textFields![1].text!)
             self.inputsa.append(alert.textFields![2].text!)
+            self.inputsa.append(alert.textFields![1].text!)
 
             Functionsa().buttonSave(inputs: self.inputsa)
             self.readValues()
@@ -155,13 +154,17 @@ class ArticleTableViewController: UITableViewController {
         }
     }
     
-    
-    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! ArticuloTableViewCell
-        let myVC = storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        navigationController?.pushViewController(myVC, animated: true)
-        
-    }*/
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            let newprod = productList[indexPath.row]
+            Functionsa().deleteprod(id: newprod.id)
+            readValues()
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+
 
 
 }

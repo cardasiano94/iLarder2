@@ -63,6 +63,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGO-Px-B6U">
+                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem style="plain" id="s3S-9j-geh">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="beV-RN-9bZ">
+                                            <rect key="frame" x="20" y="7" width="374" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Actualizar"/>
+                                            <connections>
+                                                <segue destination="DBW-1C-NlI" kind="show" identifier="updateSegue" id="e7O-ph-dqc"/>
+                                            </connections>
+                                        </button>
+                                        <connections>
+                                            <segue destination="DBW-1C-NlI" kind="show" identifier="updateSegue" id="mTr-Bh-3jW"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -176,4 +195,7 @@
     <resources>
         <image name="accept-tick-icon-12" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="e7O-ph-dqc"/>
+    </inferredMetricsTieBreakers>
 </document>

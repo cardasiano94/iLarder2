@@ -28,6 +28,18 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "updateSegue" {
+            currentProduct?.name = productName.text
+            currentProduct?.rate = Double(weekRate.text!)!
+            currentProduct?.remaning = Int(remainingUnits.text!)!
+            // Pass the selected object to the new view controller.
+            Functionsa().updateProduct(product: currentProduct!)
+            var nextScene =  segue.destination as! ArticleTableViewController
+            nextScene.navigationItem.hidesBackButton = true
+        }
+    }
 
 
 }

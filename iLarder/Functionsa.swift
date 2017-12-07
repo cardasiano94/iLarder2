@@ -113,5 +113,80 @@ class Functionsa: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.tableViewProducts.reloadData()
     }
     
+    func deleteprod(id: Int) {
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            .appendingPathComponent("ProductDatabase.sqlite")
+        
+        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
+            print("error opening database")
+        }
+        var stmt: OpaquePointer?
+        
+        let queryString = "DELETE FROM Product WHERE id = " + String(id)
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure inserting product: \(errmsg)")
+            return
+        }
+        
+        
+    }
+    
+    func updateProduct(product: Product) {
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            .appendingPathComponent("ProductDatabase.sqlite")
+        
+        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
+            print("error opening database")
+        }
+        var stmt: OpaquePointer?
+        
+        let name = product.name
+        let rate = String(format:"%.1f", product.rate)
+        let remaining = String(format:"%d", product.remaning)
+        let id = String(format:"%d", product.id)
+        
+        
+        let queryString1 = "UPDATE Product SET name = (?), rate = (?)"
+        let queryString2 = ", remaning = "+remaining+" WHERE id ="+id
+        let queryString = queryString1 + queryString2
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing update: \(errmsg)")
+            return
+        }
+        
+        if sqlite3_bind_text(stmt, 1, name, -1, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        if sqlite3_bind_double(stmt, 2, (remaining as NSString).doubleValue) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure updating product: \(errmsg)")
+            return
+        }
+        
+        //inputedName.text=""
+        //textFieldRemaning.text=""
+        
+        //readValues()
+        
+        print("Product updated successfully")
+    }
+    
 }
 

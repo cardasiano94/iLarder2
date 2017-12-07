@@ -145,7 +145,6 @@ class ArticleTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! ArticuloTableViewCell
         let myVC = storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        //adsadsadasdsada
         navigationController?.pushViewController(myVC, animated: true)
         
     }

@@ -15,8 +15,10 @@ class ArticleTableViewController: UITableViewController {
     var textFieldName = UITextField()
     var inputsa = [String]()
     
+
     @IBOutlet weak var tableViewProducts: UITableView!
     //@IBOutlet weak var textFieldName: UITextField!
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return productList.count
@@ -36,10 +38,48 @@ class ArticleTableViewController: UITableViewController {
         
         cell.ArticleName?.text = product.name
         cell.ArticleQuantity?.text = String(product.remaning)
-        //cell.ratingControl.rating = meal.rating
+        
+        cell.addArticle.tag = indexPath.row
+        cell.addArticle.addTarget(self, action: #selector(ArticleTableViewController.buttonClicked), for: .touchUpInside)
         
         return cell
     }
+    
+    func buttonClicked(sender: Any){
+        
+        var articleNumber: Int
+        articleNumber = (sender as AnyObject).tag
+
+        
+        let alert = UIAlertController(
+            title: "Modificar cantidad de articulos",
+            message: "Ingresar datos del articulo",
+            preferredStyle: UIAlertControllerStyle.alert)
+
+        alert.addTextField{(textField: UITextField) in
+            textField.placeholder = "Consumo"
+            textField.text = String(self.productList[articleNumber].remaning)
+            
+            
+        }
+        
+        let addAction = UIAlertAction(
+        title: "Agregar", style: UIAlertActionStyle.default){
+            (action) -> Void in
+            self.inputsa.append(alert.textFields![0].text!)
+            self.inputsa.append(alert.textFields![2].text!)
+            self.inputsa.append(alert.textFields![1].text!)
+            
+            Functionsa().buttonSave(inputs: self.inputsa)
+            self.readValues()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel) { _ in }
+        alert.addAction(addAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     
     func readValues(){

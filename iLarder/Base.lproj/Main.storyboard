@@ -122,11 +122,6 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOz-f4-ZRh">
-                                            <rect key="frame" x="360" y="29" width="46" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button"/>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9P0-So-ge2">
                                             <rect key="frame" x="232" y="33" width="120" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -134,12 +129,18 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ax7-nm-kNf">
+                                            <rect key="frame" x="339" y="28" width="55" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Agregar"/>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="ArticleName" destination="NiU-9P-P3q" id="q9U-Mi-yGj"/>
                                     <outlet property="ArticleQuantity" destination="9P0-So-ge2" id="OPm-1I-6tU"/>
                                     <outlet property="StatusIcon" destination="BB3-FO-O2K" id="Xc2-Pu-0AO"/>
+                                    <outlet property="addArticle" destination="ax7-nm-kNf" id="uVR-Du-jaY"/>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="productSegue" id="EfM-Us-z1l"/>
                                 </connections>
                             </tableViewCell>
@@ -196,6 +197,7 @@
         <image name="accept-tick-icon-12" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="EfM-Us-z1l"/>
         <segue reference="e7O-ph-dqc"/>
     </inferredMetricsTieBreakers>
 </document>

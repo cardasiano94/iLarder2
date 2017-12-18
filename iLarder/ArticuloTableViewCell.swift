@@ -14,9 +14,10 @@ class ArticuloTableViewCell: UITableViewCell {
     @IBOutlet weak var ArticleName: UILabel!
     @IBOutlet weak var ArticleQuantity: UILabel!
     
+    @IBOutlet weak var addArticle: UIButton!
     @IBOutlet weak var StatusIcon: UIImageView!
     
-    override func awakeFromNib() {
+    override func awakeFromNib() { 
         super.awakeFromNib()
         // Initialization code
     }

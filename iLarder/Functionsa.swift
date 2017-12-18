@@ -188,5 +188,42 @@ class Functionsa: UIViewController, UITableViewDataSource, UITableViewDelegate {
         print("Product updated successfully")
     }
     
+    /*func updateRemaining(Prod: Product){
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            .appendingPathComponent("ProductDatabase.sqlite")
+        
+        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
+            print("error opening database")
+        }
+        
+        var stmt: OpaquePointer?
+        
+        let id = Prod.id
+        let rate = Prod.rate
+        let remaining = Prod.remaning
+        let updateRemaining = Double(remaining) - rate/7.0
+        
+        let queryString = "UPDATE Product SET remaning = " + String(updateRemaining) + "WHERE id = " + String(id)
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        if sqlite3_bind_double(stmt, 2, (updateRemaining as NSString).doubleValue) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure inserting product: \(errmsg)")
+            return
+        }
+        
+    }*/
+    
 }
 

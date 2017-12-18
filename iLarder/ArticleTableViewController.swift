@@ -157,7 +157,7 @@ class ArticleTableViewController: UITableViewController {
             print("error opening database")
         }
         
-        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Product (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, remaning DOUBLE, rate INTEGER)", nil, nil, nil ) != SQLITE_OK {
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Product (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, rate DOUBLE, remaning INTEGER)", nil, nil, nil ) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error creating table: \(errmsg)")
         }

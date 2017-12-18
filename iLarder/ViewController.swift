@@ -36,6 +36,7 @@ class ViewController: UIViewController {
             currentProduct?.remaning = Int(remainingUnits.text!)!
             // Pass the selected object to the new view controller.
             Functionsa().updateProduct(product: currentProduct!)
+            ArticleTableViewController().readValues()
             var nextScene =  segue.destination as! ArticleTableViewController
             nextScene.navigationItem.hidesBackButton = true
         }

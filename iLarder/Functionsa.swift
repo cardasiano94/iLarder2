@@ -154,26 +154,34 @@ class Functionsa: UIViewController, UITableViewDataSource, UITableViewDelegate {
         let id = String(format:"%d", product.id)
         
         
-        let queryString1 = "UPDATE Product SET name = (?), rate = (?)"
-        let queryString2 = ", remaning = "+remaining+" WHERE id ="+id
-        let queryString = queryString1 + queryString2
-        
+        let queryString = "UPDATE Product SET name = (?), rate = (?), remaning = (?) WHERE id = (?) "
+
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error preparing update: \(errmsg)")
             return
         }
-        
+        if sqlite3_bind_int(stmt, 4, (id as NSString).intValue) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
         if sqlite3_bind_text(stmt, 1, name, -1, nil) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("failure binding name: \(errmsg)")
             return
         }
-        if sqlite3_bind_double(stmt, 2, (remaining as NSString).doubleValue) != SQLITE_OK{
+        if sqlite3_bind_double(stmt, 2, (rate as NSString).doubleValue) != SQLITE_OK{
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("failure binding name: \(errmsg)")
             return
         }
+        if sqlite3_bind_int(stmt, 3, (remaining as NSString).intValue) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+
         if sqlite3_step(stmt) != SQLITE_DONE {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("failure updating product: \(errmsg)")

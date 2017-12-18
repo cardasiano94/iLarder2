@@ -49,6 +49,8 @@ class ArticleTableViewController: UITableViewController {
         
         var articleNumber: Int
         articleNumber = (sender as AnyObject).tag
+        let newprod = productList[articleNumber]
+        
 
         
         let alert = UIAlertController(
@@ -57,20 +59,17 @@ class ArticleTableViewController: UITableViewController {
             preferredStyle: UIAlertControllerStyle.alert)
 
         alert.addTextField{(textField: UITextField) in
-            textField.placeholder = "Consumo"
             textField.text = String(self.productList[articleNumber].remaning)
-            
             
         }
         
         let addAction = UIAlertAction(
-        title: "Agregar", style: UIAlertActionStyle.default){
+        title: "Modificar", style: UIAlertActionStyle.default){
             (action) -> Void in
             self.inputsa.append(alert.textFields![0].text!)
-            self.inputsa.append(alert.textFields![2].text!)
-            self.inputsa.append(alert.textFields![1].text!)
+            newprod.remaning = Int(alert.textFields![0].text!)!
             
-            Functionsa().buttonSave(inputs: self.inputsa)
+            Functionsa().updateProduct(product: newprod)
             self.readValues()
         }
         

@@ -12,6 +12,7 @@
 		DE54527C1FD88ED800BBC021 /* Functionsa.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE54527B1FD88ED800BBC021 /* Functionsa.swift */; };
 		DE67325A1FE8A59800352368 /* HistorialTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6732591FE8A59800352368 /* HistorialTableViewController.swift */; };
 		DE67325C1FE8A78F00352368 /* log.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67325B1FE8A78F00352368 /* log.swift */; };
+		DE67325E1FE8AD2E00352368 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67325D1FE8AD2E00352368 /* LogTableViewCell.swift */; };
 		DEBDF3511FD829020037D707 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBDF3501FD829020037D707 /* AppDelegate.swift */; };
 		DEBDF3531FD829020037D707 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBDF3521FD829020037D707 /* ViewController.swift */; };
 		DEBDF3561FD829020037D707 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEBDF3541FD829020037D707 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 		DE5452801FD890F300BBC021 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		DE6732591FE8A59800352368 /* HistorialTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorialTableViewController.swift; sourceTree = "<group>"; };
 		DE67325B1FE8A78F00352368 /* log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = log.swift; sourceTree = "<group>"; };
+		DE67325D1FE8AD2E00352368 /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
 		DEBDF34D1FD829020037D707 /* iLarder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iLarder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEBDF3501FD829020037D707 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEBDF3521FD829020037D707 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				DEBDF35C1FD829030037D707 /* Info.plist */,
 				DE6732591FE8A59800352368 /* HistorialTableViewController.swift */,
 				DE67325B1FE8A78F00352368 /* log.swift */,
+				DE67325D1FE8AD2E00352368 /* LogTableViewCell.swift */,
 			);
 			path = iLarder;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE67325E1FE8AD2E00352368 /* LogTableViewCell.swift in Sources */,
 				DE5452781FD87E7400BBC021 /* ArticleTableViewController.swift in Sources */,
 				DE67325A1FE8A59800352368 /* HistorialTableViewController.swift in Sources */,
 				DEBDF3531FD829020037D707 /* ViewController.swift in Sources */,

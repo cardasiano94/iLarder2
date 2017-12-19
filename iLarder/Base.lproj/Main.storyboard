@@ -149,10 +149,13 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="dL6-9d-S9o" id="NAB-Od-Lur"/>
+                            <outlet property="dataSource" destination="dL6-9d-S9o" id="5sH-bW-Rmr"/>
                             <outlet property="delegate" destination="dL6-9d-S9o" id="JdM-Rd-bF1"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="view" destination="noH-3T-YdQ" id="dn4-Zv-Vct"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxM-ko-LEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -261,6 +264,7 @@
         <image name="clock" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="EfM-Us-z1l"/>
         <segue reference="e7O-ph-dqc"/>
     </inferredMetricsTieBreakers>
 </document>

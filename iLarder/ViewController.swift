@@ -32,10 +32,12 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "updateSegue" {
+            var oldProduct : Product? = currentProduct
             currentProduct?.name = productName.text
             currentProduct?.rate = Double(weekRate.text!)!
             currentProduct?.remaning = Int(remainingUnits.text!)!
             // Pass the selected object to the new view controller.
+            Functionsa().historyinsert(product_old: oldProduct!, product_new: currentProduct!)
             Functionsa().updateProduct(product: currentProduct!)
             ArticleTableViewController().readValues()
             var nextScene =  segue.destination as! ArticleTableViewController

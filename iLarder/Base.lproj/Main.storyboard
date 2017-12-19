@@ -141,6 +141,11 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addedUnits" destination="sHk-eq-PqB" id="Rvn-Zo-Agz"/>
+                                    <outlet property="date" destination="VbU-At-GRF" id="902-Qa-acr"/>
+                                    <outlet property="existingUnits" destination="dl1-yc-4ec" id="zwX-Hz-k8r"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -256,6 +261,6 @@
         <image name="clock" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mTr-Bh-3jW"/>
+        <segue reference="e7O-ph-dqc"/>
     </inferredMetricsTieBreakers>
 </document>

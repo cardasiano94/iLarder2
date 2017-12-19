@@ -10,6 +10,10 @@ import UIKit
 
 class LogTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var addedUnits: UILabel!
+    @IBOutlet weak var existingUnits: UILabel!
+    @IBOutlet weak var date: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

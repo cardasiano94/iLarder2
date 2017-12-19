@@ -104,7 +104,6 @@ class ArticleTableViewController: UITableViewController {
         }
         
         self.tableViewProducts.reloadData()
-        print("mas")
     }
     
     @IBAction func addProduct(_ sender: Any) {
@@ -132,9 +131,8 @@ class ArticleTableViewController: UITableViewController {
         title: "Agregar", style: UIAlertActionStyle.default){
             (action) -> Void in
             self.inputsa.append(alert.textFields![0].text!)
-            self.inputsa.append(alert.textFields![2].text!)
             self.inputsa.append(alert.textFields![1].text!)
-
+            self.inputsa.append(alert.textFields![2].text!)
             Functionsa().buttonSave(inputs: self.inputsa)
             self.readValues()
         }
@@ -158,6 +156,10 @@ class ArticleTableViewController: UITableViewController {
         }
         
         if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS Product (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, rate DOUBLE, remaning INTEGER)", nil, nil, nil ) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error creating table: \(errmsg)")
+        }
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS history (id INTEGER PRIMARY KEY AUTOINCREMENT, date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, prod_id INTEGER, rate DOUBLE, remaning INTEGER, new_remaning)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error creating table: \(errmsg)")
         }

@@ -195,7 +195,51 @@ class Functionsa: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         print("Product updated successfully")
     }
+    func historyinsert(product_old: Product, product_new: Product) {
+
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            .appendingPathComponent("ProductDatabase.sqlite")
+        
+        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
+            print("error opening database")
+        }
+        var stmt: OpaquePointer?
     
+        let rate = String(format:"%.1f", product_old.rate)
+        let remaining_old = String(format:"%d", product_old.remaning)
+        let remaining_new = String(format:"%d", product_new.remaning)
+        
+        let queryString = "INSERT INTO history (remaning, rate, new_remaning) VALUES (?,?,?)"
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing update: \(errmsg)")
+            return
+        }
+        if sqlite3_bind_int(stmt, 1, (remaining_old as NSString).intValue) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        if sqlite3_bind_double(stmt, 2, (rate as NSString).doubleValue) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        if sqlite3_bind_int(stmt, 3, (remaining_new as NSString).intValue) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding name: \(errmsg)")
+            return
+        }
+        
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure updating product: \(errmsg)")
+            return
+        }
+        
+        print("Product updated successfully")
+    }
     /*func updateRemaining(Prod: Product){
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("ProductDatabase.sqlite")

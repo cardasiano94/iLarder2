@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Title-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="iLarder" customModuleProvider="target" sceneMemberID="viewController">
@@ -85,8 +85,8 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="Reh-TX-QUA">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="clock" id="TiQ-80-67L"/>
+                    <navigationItem key="navigationItem" title="View Controller" id="nhe-j4-CWu">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="clock" id="7vy-LU-V8T"/>
                     </navigationItem>
                     <connections>
                         <outlet property="productName" destination="mRf-M4-Z1Z" id="TxI-Ai-bNM"/>

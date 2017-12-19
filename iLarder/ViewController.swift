@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var currentProduct : Product?
+    var prodId : Int = 0
     
     @IBOutlet weak var productName: UITextField!
     @IBOutlet weak var weekRate: UITextField!
@@ -39,6 +40,15 @@ class ViewController: UIViewController {
             ArticleTableViewController().readValues()
             var nextScene =  segue.destination as! ArticleTableViewController
             nextScene.navigationItem.hidesBackButton = true
+        }
+        if segue.identifier == "historialSegue" {
+            prodId = (currentProduct?.id)!
+            print(prodId)
+            // Pass the selected object to the new view controller.
+            Functionsa().updateProduct(product: currentProduct!)
+            //ArticleTableViewController().readValues()
+            var nextScene =  segue.destination as! HistorialTableViewController
+            nextScene.currentId = prodId
         }
     }
 

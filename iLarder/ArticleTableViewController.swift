@@ -55,7 +55,7 @@ class ArticleTableViewController: UITableViewController {
         
         let alert = UIAlertController(
             title: "Modificar cantidad de articulos",
-            message: "Ingresar datos del articulo",
+            message: "Ingresar la nueva cantidad del articulo",
             preferredStyle: UIAlertControllerStyle.alert)
 
         alert.addTextField{(textField: UITextField) in
@@ -132,8 +132,8 @@ class ArticleTableViewController: UITableViewController {
         title: "Agregar", style: UIAlertActionStyle.default){
             (action) -> Void in
             self.inputsa.append(alert.textFields![0].text!)
-            self.inputsa.append(alert.textFields![2].text!)
             self.inputsa.append(alert.textFields![1].text!)
+            self.inputsa.append(alert.textFields![2].text!)
 
             Functionsa().buttonSave(inputs: self.inputsa)
             self.readValues()

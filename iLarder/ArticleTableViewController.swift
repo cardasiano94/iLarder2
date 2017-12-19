@@ -55,7 +55,7 @@ class ArticleTableViewController: UITableViewController {
         
         let alert = UIAlertController(
             title: "Modificar cantidad de articulos",
-            message: "Ingresar datos del articulo",
+            message: "Ingresar la nueva cantidad del articulo",
             preferredStyle: UIAlertControllerStyle.alert)
 
         alert.addTextField{(textField: UITextField) in

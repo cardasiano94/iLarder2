@@ -10,9 +10,10 @@ import UIKit
 
 class HistorialTableViewController: UITableViewController {
     var currentId: Int = 0
+    var currentLog: log?
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(currentId)
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

@@ -15,6 +15,7 @@ class HistorialTableViewController: UITableViewController {
     var logList = [log]()
     var db: OpaquePointer?
     
+    @IBOutlet var tableviewlogs: UITableView!
     func readValuesHistory(id: Int){
         logList.removeAll()
         
@@ -39,7 +40,7 @@ class HistorialTableViewController: UITableViewController {
             logList.append(log(id: Int(id), date: String?(date), prod_id: Int(prod_id), rate: Double(rate) , remaining: Int(remaining), new_remaining: Int(new_remaining) ))
         }
         
-        self.tableViewProducts.reloadData()
+        self.tableviewlogs.reloadData()
     }
     
     override func viewDidLoad() {

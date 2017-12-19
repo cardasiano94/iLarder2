@@ -154,6 +154,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="tableviewlogs" destination="noH-3T-YdQ" id="vcr-ps-FBr"/>
                         <outlet property="view" destination="noH-3T-YdQ" id="dn4-Zv-Vct"/>
                     </connections>
                 </tableViewController>
@@ -264,7 +265,6 @@
         <image name="clock" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EfM-Us-z1l"/>
         <segue reference="e7O-ph-dqc"/>
     </inferredMetricsTieBreakers>
 </document>

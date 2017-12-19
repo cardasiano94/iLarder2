@@ -19,8 +19,8 @@ class HistorialTableViewController: UITableViewController {
     func readValuesHistory(id: Int){
         logList.removeAll()
         
-        let queryString = "SELECT * FROM History WHERE prod_id ="+String(id)
-        
+        let queryString = "SELECT * FROM history WHERE prod_id = "+String(id)
+        //let queryString = "SELECT * FROM history"
         var stmt:OpaquePointer?
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
@@ -45,6 +45,15 @@ class HistorialTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            .appendingPathComponent("ProductDatabase.sqlite")
+        
+        
+        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
+            print("error opening database")
+        }
+        
+        
         readValuesHistory(id: currentId)
         
 
@@ -64,23 +73,32 @@ class HistorialTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return logList.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cellIdentifier = "LogTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? LogTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+        }
+        
+        // Fetches the appropriate meal for the data source layout.
+        let log = logList[indexPath.row]
+        
+        cell.addedUnits.text = String(log.new_remaining)
+        cell.existingUnits.text = String(log.remaining)
+        cell.date.text = log.date
+        
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

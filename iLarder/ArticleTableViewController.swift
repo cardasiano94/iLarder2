@@ -67,8 +67,11 @@ class ArticleTableViewController: UITableViewController {
         title: "Modificar", style: UIAlertActionStyle.default){
             (action) -> Void in
             self.inputsa.append(alert.textFields![0].text!)
-            newprod.remaning = Int(alert.textFields![0].text!)!
+            var oldprod = Product(id: newprod.id, name: newprod.name, rate: newprod.rate, remaning: newprod.remaning)
             
+            
+            newprod.remaning = Int(alert.textFields![0].text!)!
+            Functionsa().historyinsert(product_old: oldprod, product_new: newprod)
             Functionsa().updateProduct(product: newprod)
             self.readValues()
         }
@@ -159,7 +162,7 @@ class ArticleTableViewController: UITableViewController {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error creating table: \(errmsg)")
         }
-        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS history (id INTEGER PRIMARY KEY AUTOINCREMENT, date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, prod_id INTEGER, rate DOUBLE, remaning INTEGER, new_remaning)", nil, nil, nil) != SQLITE_OK {
+        if sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS history (id INTEGER PRIMARY KEY AUTOINCREMENT, date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, prod_id INTEGER, rate DOUBLE, remaning INTEGER, new_remaning INTEGER)", nil, nil, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error creating table: \(errmsg)")
         }
